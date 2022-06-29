@@ -52,11 +52,49 @@
 				},
 				{
 					"name": "keyword.control.chasm",
-					"match": "\\b(JMP|CALL|RET|JMPEQ|JMPNE|JMPEQKEY|JMPNEKEY|OFFJMP)\\b"
+					"begin": "\\b(JMP|CALL|RET|JMPEQ|JMPNE|JMPEQKEY|JMPNEKEY|OFFJMP)\\b",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.line.chasm",
+							"match": ";.*(?=\n)"
+						},
+						{
+							"include": "#register"
+						},
+						{
+							"include": "#number"
+						},
+						{
+							"include": "#label"
+						},
+						{
+							"include": "#error"
+						}
+					]
 				},
 				{
 					"name": "keyword.other.chasm",
-					"match": "\\b(CHIP|SYSCALL|CLR|DRAW)\\b"
+					"begin": "\\b(CHIP|SYSCALL|CLR|DRAW)\\b",
+					"end": "\n",
+					"patterns": [
+						{
+							"name": "comment.line.chasm",
+							"match": ";.*(?=\n)"
+						},
+						{
+							"include": "#register"
+						},
+						{
+							"include": "#number"
+						},
+						{
+							"include": "#label"
+						},
+						{
+							"include": "#error"
+						}
+					]
 				}
 			]
 		},
@@ -75,11 +113,11 @@
 			"patterns": [
 				{
 					"name": "constant.numeric.chasm",
-					"match": "\\b(0d[0-9]+|0b[01]+)\\b"
+					"match": "\\b(0(d|D)[0-9]+|0(b|B)[01]+|0(x|X)[0-9a-fA-F]+|0(o|O)[0-7]+)\\b"
 				},
 				{
 					"name": "invalid.illegal.chasm",
-					"match": "\\b0(d|b)\\S*\\b"
+					"match": "\\b0(d|D|b|B|x|X|o|O)\\S*\\b"
 				},
 				{
 					"name": "constant.numeric.chasm",
@@ -95,11 +133,11 @@
 			"patterns": [
 				{
 					"name": "invalid.deprecated.chasm",
-					"match": "\\b(0d[0-9]+|0b[01]+)\\b"
+					"match": "\\b(0(d|D)[0-9]+|0(b|B)[01]+|0(x|X)[0-9a-fA-F]+|0(o|O)[0-7]+)\\b"
 				},
 				{
 					"name": "invalid.illegal.chasm",
-					"match": "\\b0(d|b)\\S*\\b"
+					"match": "\\b0(d|D|b|B|x|X|o|O)\\S*\\b"
 				},
 				{
 					"name": "invalid.deprecated.chasm",
