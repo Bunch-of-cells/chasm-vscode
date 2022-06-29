@@ -2,7 +2,7 @@
     "name": "chasm-language",
     "displayName": "Chasm Language",
     "description": "Chasm Language support",
-    "publisher": "Chasm",
+    "publisher": "Bunch-of-cells",
     "version": "0.0.1",
     "repository": "https://github.com/Chassembly/chasm-vscode.git",
     "icon": "images/maxresdefault.jpg",
