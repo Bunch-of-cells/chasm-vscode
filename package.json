@@ -3,7 +3,7 @@
     "displayName": "Chasm Language",
     "description": "Chasm Language support",
     "publisher": "Bunch-of-cells",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "repository": "https://github.com/Chassembly/chasm-vscode.git",
     "icon": "images/maxresdefault.jpg",
     "engines": {
