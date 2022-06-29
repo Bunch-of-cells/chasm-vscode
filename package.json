@@ -1,0 +1,28 @@
+{
+    "name": "chasm-language",
+    "displayName": "Chasm Language",
+    "description": "Chasm Language support",
+    "publisher": "Chasm",
+    "version": "0.0.1",
+    "repository": "https://github.com/Chassembly/chasm-vscode.git",
+    "icon": "images/maxresdefault.jpg",
+    "engines": {
+        "vscode": "^1.68.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "chasm",
+            "aliases": ["Chasm", "chasm"],
+            "extensions": [".chasm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "chasm",
+            "scopeName": "source.chasm",
+            "path": "./syntaxes/chasm.tmLanguage.json"
+        }]
+    }
+}

@@ -1,0 +1,136 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "chasm",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#keyword"
+		},
+		{
+			"include": "#!register"
+		},
+		{
+			"include": "#!number"
+		},
+		{
+			"include": "#mprocessor"
+		},
+		{
+			"include": "#label"
+		},
+		{
+			"include": "#error"
+		}
+	],
+	"repository": {
+		"keyword": {
+			"patterns": [
+				{
+					"name": "keyword.operator.chasm",
+					"begin": "\\b(ADD|SUB|SUBFROM|AND|OR|XOR|SHL|SHR|RAND|ADDPTR|LOAD|DUMP|POINT|SET|SETDELAY|SETSOUND|SETPTRCHR|SETPTRDEC|GETKEY|GETDELAY)\\b",
+					"end": ";|\n",
+					"patterns": [
+						{
+							"include": "#register"
+						},
+						{
+							"include": "#number"
+						},
+						{
+							"include": "#label"
+						},
+						{
+							"include": "#error"
+						}
+					]
+				},
+				{
+					"name": "keyword.control.chasm",
+					"match": "\\b(JMP|CALL|RET|JMPEQ|JMPNE|JMPEQKEY|JMPNEKEY|OFFJMP)\\b"
+				},
+				{
+					"name": "keyword.other.chasm",
+					"match": "\\b(CHIP|SYSCALL|CLR|DRAW)\\b"
+				}
+			]
+		},
+		"mprocessor": {
+			"begin": "%([#[+-]|?[#!|-]|!|+);",
+			"end": "\n",
+			"name": "constant.other.chasm",
+			"contentName": "string.unquoted.chasm"
+		},
+		"comment": {
+			"name": "comment.line.chasm",
+			"begin": ";",
+			"end": "\n"
+		},
+		"number": {
+			"patterns": [
+				{
+					"name": "constant.numeric.chasm",
+					"match": "\\b(0d[0-9]+|0b[01]+)\\b"
+				},
+				{
+					"name": "invalid.illegal.chasm",
+					"match": "\\b(0(d|b)\\S*)\\b"
+				},
+				{
+					"name": "constant.numeric.chasm",
+					"match": "\\b([0-9A-Fa-f]+)\\b"
+				},
+				{
+					"name": "invalid.illegal.chasm",
+					"match": "\\b([0-9]\\S*)\\b"
+				}
+			]
+		},
+		"!number": {
+			"patterns": [
+				{
+					"name": "invalid.deprecated.chasm",
+					"match": "\\b(0d[0-9]+|0b[01]+)\\b"
+				},
+				{
+					"name": "invalid.illegal.chasm",
+					"match": "\\b(0(d|b)\\S*)\\b"
+				},
+				{
+					"name": "invalid.deprecated.chasm",
+					"match": "\\b([0-9A-Fa-f]+)\\b"
+				},
+				{
+					"name": "invalid.illegal.chasm",
+					"match": "\\b([0-9]\\S*)\\b"
+				}
+			]
+		},
+		"register": {
+			"name": "constant.language.chasm",
+			"match": "\\b((v|V)[0-9a-fA-F])\\b"
+		},
+		"!register": {
+			"name": "invalid.deprecated.chasm",
+			"match": "\\b((v|V)[0-9a-fA-F])\\b"
+		},
+		"label": {
+			"patterns": [
+				{
+					"name": "entity.name.function.chasm",
+					"match": "\\b(([a-zA-Z_][a-zA-Z0-9_-]*)=>)\\b"
+				},
+				{
+					"name": "entity.name.tag.chasm",
+					"match": "\\b([a-zA-Z_][a-zA-Z0-9_-]*)\\b"
+				}
+			]
+		},
+		"error": {
+			"name": "invalid.illegal.chasm",
+			"match": "\\S+"
+		}
+	},
+	"scopeName": "source.chasm"
+}
